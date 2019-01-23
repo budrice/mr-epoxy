@@ -1,0 +1,45 @@
+<div class="container" id="eldis_web_app_admin_page">
+	<div class="row">
+		<div class="panel mx-auto">
+			<table class="table table-dark table-striped table-hover">
+				<thead>
+					<tr>
+						<th>username</th>
+						<th>email</th>
+						<th>access</th>
+						<th>date joined</th>
+						<th>last login</th>
+						<th>is logged in</th>
+						<th>removed</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="user in users" href ng-click="toggleModal(user)">
+						<td>{{ user.username }}</td>
+						<td>{{ user.email_address }}</td>
+						<td>{{ user.access_level }}</td>
+						<td>{{ user.date_join }}</td>
+						<td>{{ user.date_last_log }}</td>
+						<td>{{ (user.is_logged_in === 1) ? 'Yes': 'No' }}</td>
+						<td>{{ user.removed }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<div bud-modal toggle-modal="toggle">
+	<div class="panel p-3">
+		<form name="adminForm">
+			<label for="">Username</label>
+			<input type="text" class="form-control" ng-model="admin.username" ng-blur="update(adminForm, admin)" required><br>
+			<label for="">Email Address</label>
+			<input type="email" class="form-control" ng-model="admin.email_address" ng-blur="updateadminForm, admin)" required><br>
+			<label for="">Access Level</label>
+			<input type="number" class="form-control" ng-model="admin.access_level" ng-blur="update(adminForm, admin)" required><br>
+			<label for="">Remove:&nbsp;</label><input type="radio" ng-model="adminForm.removed" ng-change="update(adminForm, admin)"></label><br>
+		</form>
+	</div>
+</div>
+

@@ -1,0 +1,32 @@
+<main>
+	<bud-navbar></bud-navbar>
+	<header></header>
+	<div class="container" id="eldis_app_login_container">
+		<div class="row">
+			<div class="col-xs-1 col-sm-2 col-md-3 col-lg-4"></div>
+			<div class="col-xs-10 col-sm-8 col-md-6 col-lg-4">
+				<form>
+					<div class="panel" id="eldis_app_login_box">
+						<p>{{message}}&nbsp;</p><br>
+						<label for="eldis_app_login_email_address">Email Address</label><br>
+						<input type="email" class="form-control" id="eldis_app_login_email_address" ng-model="model.email" ng-change="userSearch('email', model.email)"
+						 required><br>
+						<label for="eldis_app_login_username">Username</label><br>
+						<input type="text" class="form-control" id="eldis_app_login_username" ng-model="model.username" ng-change="userSearch('username', model.username)"
+						 required><br>
+						<label for="eldis_app_login_password">Enter password</label><br>
+						<input type="password" class="form-control" id="eldis_app_login_password" ng-model="model.password" required><br>
+						<label for="eldis_app_login_repassword" ng-show="login_obj.view.registration_pass">Enter password again</label><br>
+						<input type="password" class="form-control" id="eldis_app_login_repassword" ng-model="model.repassword" ng-show="login_obj.view.registration_pass"
+						 required><br>
+						<button class="btn btn-info" id="eldis_app_login_btn" ng-click="login()" ng-show="login_obj.view.login_btn"
+						 ng-disabled="login_obj.disabled.login_btn">Login</button>
+						<button class="btn btn-default" id="eldis_app_registration_btn" ng-click="register()" ng-show="login_obj.view.registration_btn"
+						 ng-disabled="login_obj.disabled.registration_btn">Register</button>
+					</div>
+				</form>
+			</div>
+			<div class="col-xs-1 col-sm-2 col-md-3 col-lg-4"></div>
+		</div>
+	</div>
+</main>

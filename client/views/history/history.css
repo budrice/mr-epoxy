@@ -1,0 +1,15 @@
+header {
+    min-height: 10%;
+}
+div#main-contain article {
+    background-color: white;
+}
+h1, h2 {
+    font-family: "Times New Roman";
+    font-weight: 600;
+}
+h1,h2,h3 { color: #000; }
+
+
+h1 { font-size: 4em; }
+h2 { font-size: 2em; }

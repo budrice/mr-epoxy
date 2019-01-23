@@ -1,0 +1,17 @@
+h1, h2 {
+    font-family: "Times New Roman";
+    font-weight: 600;
+}
+h1, h2, h3 { 
+    color: #fff;
+    text-align: center;
+}
+h1 { font-size: 4em; }
+h2 { font-size: 2em; }
+img {
+    margin: 25px auto;
+    border: 10px solid rgb(0, 255, 179);
+}
+header {
+    min-height: 10%;
+}

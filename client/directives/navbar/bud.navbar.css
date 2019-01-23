@@ -1,0 +1,28 @@
+nav.navbar {
+    background-color: rgb(0, 255, 179);
+    color: rgb(0, 0, 0);
+    margin-bottom: 0;
+    height: 55px;
+}
+ul.nav {
+    margin-top: 0;
+}
+button, a {
+    margin-right: 3px;
+}
+button:hover {
+    background-color: rgb(0, 123, 128);
+    color: rgb(255, 255, 255);
+}
+div.navbar-header a {
+    color: rgb(0, 0, 0);
+}
+.right {
+	float: right;
+}
+.btn-info {
+    color: rgb(0, 0, 0);
+}
+.navbar-text {
+    font-size: 16px;
+}

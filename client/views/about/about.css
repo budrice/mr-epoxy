@@ -1,0 +1,14 @@
+#eldis_webapp_about_page {
+	max-width: 1012px;
+	height: 78vh;
+}
+#about_panel_img {
+	width: 100%;
+	max-width:750px;
+	height: 100%;
+	border-radius: 5px;
+	box-shadow: 0 0 15px #000;
+}
+.panel-img {
+	padding: 16px;
+}

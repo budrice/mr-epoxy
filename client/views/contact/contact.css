@@ -1,0 +1,12 @@
+#eldis_webapp_contact_container {
+	max-width: 1012px;
+	height: 78vh;
+}
+form {
+	width: 100%;
+	min-height: 300px;
+}
+textarea#contact_textarea {
+	min-height: 200px;
+	resize: none;
+}

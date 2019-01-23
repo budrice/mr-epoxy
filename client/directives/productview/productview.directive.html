@@ -1,0 +1,55 @@
+<div class="container-fluid" style="padding-right: 24px; background-color: #fff; height: 70vh;">
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="row">
+                <img ng-src="../../images/{{ product_to_view.filename }}" alt="{{ product_to_view.name }}" class="img-responsive">
+            </div>
+        </div>
+        <div class="col-xs-6" style="padding-right: 5px;">
+
+            <div class="row">
+                <div class="col-xs-6">
+                    <h4>{{ product_to_view.item }}</h4>
+                </div>
+                <div class="col-xs-6" style="background-color: rgb(0, 128, 0); color: rgb(255, 255, 255)">
+                    <h3>${{ product_to_view.amount }}</h3>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2><strong>{{ product_to_view.name }}</strong></h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h4>{{ product_to_view.description }}</h4>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 text">
+                    <label for="squarefeet">Sq ft</label>
+                    <div class="input-group">
+                        <input type="number" class="form-control" placeholder="sqft" aria-describedby="basic-addon2"
+                            ng-model="product_to_view.sqft" ng-change="calulateGallons(product_to_view.sqft)">
+                        <span class="input-group-addon" id="basic-addon2">sqft</span>
+                    </div>
+                    <label for="quantity">Qty</label>
+                    <div class="input-group">
+                        <input type="number" class="form-control" placeholder="Quantity" aria-describedby="basic-addon2"
+                            ng-model="product_to_view.gallons">
+                        <span class="input-group-addon" id="basic-addon2">{{ product_to_view.per }}</span>
+                    </div>
+                    <button class="btn btn-success form-control" ng-click="placeOrder()">Order</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 text">
+            <p><strong>features:</strong> {{ product_to_view.features }}</p>
+        </div>
+    </div>
+</div>

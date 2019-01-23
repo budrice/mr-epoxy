@@ -1,0 +1,67 @@
+﻿<!doctype html>
+<html ng-app="app">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Angular single page application with user authentiction">
+    <meta name="author" content="Eldis Rice">
+
+    <title>Mr Epoxy</title>
+
+    <!-- css -->
+    <link type="text/css" rel="stylesheet" href="/stylesheets/style.css">
+    <link type="text/css" rel="stylesheet" href="/stylesheets/bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="/stylesheets/toastr.css">
+    <link type="text/css" rel="stylesheet" href="/stylesheets/fontawesome-5.0.13-all.css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="javascripts/html5shiv.js"></script>
+    <script src="javascripts/respond.min.js"></script>
+<![endif]-->
+
+</head>
+
+<body>
+
+    <div ng-view></div>
+
+    <!-- Vendor .js files -->
+    <script type="text/javascript" src="/javascripts/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/javascripts/bootstrap.js"></script>
+    <script type="text/javascript" src="/javascripts/angular/angular.js"></script>
+    <script type="text/javascript" src="/javascripts/angular/angular-animate.js"></script>
+    <script type="text/javascript" src="/javascripts/angular/angular-route.js"></script>
+    <script type="text/javascript" src="/javascripts/angular/angular-resource.js"></script>
+    <script type="text/javascript" src="/javascripts/angular/angular-sanitize.js"></script>
+    <script type="text/javascript" src="/javascripts/angular/angular-touch.js"></script>
+    <script type="text/javascript" src="/javascripts/toastr.js"></script>
+    <script type="text/javascript" src="/javascripts/underscore-1.9.0.js"></script>
+    <script type="text/javascript" src="/javascripts/angular-css.js"></script>
+
+    <!-- Application .js bootstrapping -->
+    <script type="text/javascript" src="app.module.js"></script>
+    <!-- routes -->
+    <script type="text/javascript" src="/views/config.route.js"></script>
+    <!-- services -->
+    <script type="text/javascript" src="/services/app.service.js"></script>
+    <script type="text/javascript" src="/services/product.service.js"></script>
+    <script type="text/javascript" src="/services/msgbox.js"></script>
+    <!-- directives -->
+    <script type="text/javascript" src="/directives/navbar/bud.navbar.directive.js"></script>
+    <script type="text/javascript" src="/directives/productlink/productlink.directive.js"></script>
+    <script type="text/javascript" src="/directives/productlist/productlist.directive.js"></script>
+    <script type="text/javascript" src="/directives/productview/productview.directive.js"></script>
+    <!-- views -->
+    <script type="text/javascript" src="/views/login/login.controller.js"></script>
+    <script type="text/javascript" src="/views/home/home.controller.js"></script>
+    <script type="text/javascript" src="/views/products/products.controller.js"></script>
+    <script type="text/javascript" src="/views/history/history.controller.js"></script>
+</body>
+
+</html>
