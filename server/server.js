@@ -6,7 +6,7 @@ let cluster = require('cluster');
 let config = require('../config/config.json');
 let cpus = require('os').cpus().length;
 
-let port = 80;
+let port = 30080;
 let secure_port = 443;
 
 
