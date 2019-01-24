@@ -10,11 +10,11 @@ let port = 80;
 let secure_port = 443;
 
 
-let options = {
-    pfx: fs.readFileSync(__dirname + '/eldis_webapp.pfx'),
-    passphrase: config.passphrase,
-    requestCert: false
-};
+// let options = {
+//     pfx: fs.readFileSync(__dirname + '/eldis_webapp.pfx'),
+//     passphrase: config.passphrase,
+//     requestCert: false
+// };
 
 if (cluster.isMaster) {
     for (let i = 0; i < cpus; i++) {
@@ -25,8 +25,8 @@ if (cluster.isMaster) {
     });
 }
 else {
-    http.createServer().listen(port);
-    var server = https.createServer(options, app).listen(secure_port);
+    var server = http.createServer().listen(port);
+    // var server = https.createServer(options, app).listen(secure_port);
     server.on('error', onError);
     server.on('listening', onListening);
 }
