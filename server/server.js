@@ -16,20 +16,20 @@ let secure_port = 443;
 //     requestCert: false
 // };
 
-if (cluster.isMaster) {
-    for (let i = 0; i < cpus; i++) {
-        cluster.fork();
-    }
-    cluster.on('exit', function (worker) {
-        console.log('worker ' + worker.process.pid + ' died');
-    });
-}
-else {
-    var server = http.createServer().listen(port);
-    // var server = https.createServer(options, app).listen(secure_port);
-    server.on('error', onError);
-    server.on('listening', onListening);
-}
+// if (cluster.isMaster) {
+//     for (let i = 0; i < cpus; i++) {
+//         cluster.fork();
+//     }
+//     cluster.on('exit', function (worker) {
+//         console.log('worker ' + worker.process.pid + ' died');
+//     });
+// }
+// else {
+var server = http.createServer().listen(port);
+// var server = https.createServer(options, app).listen(secure_port);
+server.on('error', onError);
+server.on('listening', onListening);
+// }
 
 /**
 * Event listener for HTTP server "error" event.
