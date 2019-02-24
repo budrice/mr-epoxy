@@ -13,8 +13,11 @@
 			Insert: insert,
 			Update: update,
 			Register: register,
-			Login: login,
-			BasicSearch: basicSearch,
+            Login: login,
+            UserSearch: userSearch,
+            BasicSearch: basicSearch,
+            GetInvoice: getInvoice,
+            UpdateUnassignedInvoice: updateUnassignedInvoice,
 			IsLoggedIn: isLoggedIn,
 			GetUserObject: getUserObject,
 			SendEmail: sendEmail
@@ -22,7 +25,7 @@
 
 		function search(search_object) {
 			return new Promise((resolve, reject) => {
-				$http.get('/api/v1/database/search/' + search_object.table + '/' + search_object.column + '/' + search_object.value).then((result) => {
+				$http.get('/api/database/search/' + search_object.table + '/' + search_object.column + '/' + search_object.value).then((result) => {
 					resolve(result);
 				}, (error) => {
 					reject(error);
@@ -33,7 +36,7 @@
 		function insert(insert_object) {
 			return new Promise((resolve, reject) => {
 				$http({
-					url: '/api/v1/database/insert',
+					url: '/api/database/insert',
 					method: 'POST',
 					data: insert_object
 				}).then((result) => {
@@ -47,7 +50,7 @@
 		function update(update_object) {
 			return new Promise((resolve, reject) => {
 				$http({
-					url: '/api/v1/database/update',
+					url: '/api/database/update',
 					method: 'PUT',
 					data: update_object
 				}).then((result) => {
@@ -63,7 +66,7 @@
 			return new Promise((resolve, reject) => {
 				$http({
 					method: 'POST',
-					url: '/api/v1/database/register',
+					url: '/api/database/register',
 					data: user_object
 				}).then((result) => {
 					resolve(result);
@@ -77,13 +80,10 @@
 			return new Promise((resolve, reject) => {
 				$http({
 					method: 'POST',
-					url: '/api/v1/database/login',
+					url: '/api/database/login',
 					data: dataObj
 				}).then((result) => {
-					if (result.error) {
-						console.log(result.error);
-					}
-					else {
+					if (!result.error) {
 						window.sessionStorage.setItem('USER_OBJ', JSON.stringify(result));
 					}
 					resolve(result);
@@ -92,13 +92,14 @@
 				});
 
 			});
-		}
-
-		function basicSearch(table, key, value) {
+        }
+        
+        
+        function userSearch(key, value) {
 			return new Promise((resolve, reject) => {
 				$http({
 					method: 'GET',
-					url: '/api/v1/database/basicsearch/' + table + '/' + key + '/' + value
+                    url: '/api/database/usersearch/' + key + '/' + value
 				}).then((result) => {
 					if (result.error) {
 						reject(result);
@@ -112,13 +113,73 @@
 			});
 		}
 
+        function basicSearch(table, key, value, token, id) {
+			return new Promise((resolve, reject) => {
+				$http({
+					method: 'GET',
+                    url: '/api/database/basicsearch/' + table + '/' + key + '/' + value + '/' + id,
+                    headers: {
+                        'x-access-token': token
+                    }
+				}).then((result) => {
+					if (result.error) {
+						reject(result);
+					}
+					else {
+						resolve(result);
+					}
+				}, (error) => {
+					reject(error);
+				});
+			});
+		}
+        
+        function getInvoice(id, key, invoice) {
+			return new Promise((resolve, reject) => {
+				$http({
+					method: 'GET',
+					url: '/api/database/getinvoice/' + id + '/' + key + '/' + invoice
+				}).then((result) => {
+					if (result.error) {
+						reject(result);
+					}
+					else {
+						resolve(result);
+					}
+				}, (error) => {
+					reject(error);
+				});
+			});
+        }
+        
+        function updateUnassignedInvoice(inv, id) {
+            return new Promise((resolve, reject) => {
+                let data = { inv: inv, id: id };
+                $http({
+                    method: 'POST',
+                    url: '/api/database/updateunassignedinvoice',
+                    data: data
+                }).then((result) => {
+                    if (result.error) {
+                        reject(error);
+                    }
+                    else {
+                        resolve(true);
+                    }
+                    resolve(result);
+                }, (error) => {
+                    reject(error);
+                });
+            });
+        }
+
 		/**
- * isLoggedIn
- * @return {Boolean} is logged in
- */
+         * isLoggedIn
+         * @return {Boolean} is logged in
+         */
 		function isLoggedIn() {
 			let response = true;
-			let userObj = JSON.parse(window.sessionStorage.getItem('USER_OBJ'));
+			let userObj = getUserObject();
 			if (userObj === null) {
 				response = false;
 			}
@@ -135,10 +196,11 @@
 
 
 		function sendEmail(email_object) {
+            console.log(email_object);
 			return new Promise((resolve, reject) => {
 				$http({
 					method: 'POST',
-					url: '/api/v1/email/send',
+					url: '/api/emailer/send',
 					data: email_object
 				}).then((result) => {
 					if (result.error) {

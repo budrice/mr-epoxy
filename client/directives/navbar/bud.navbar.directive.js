@@ -10,7 +10,7 @@
 		controller.$inject = ['$scope', '$rootScope', '$location'];
 		function controller($scope, $rootScope, $location) {
 
-			$scope.title = 'mr-epoxy';
+			$scope.title = 'Mr-Epoxy';
 			$scope.links = [];
 			$scope.user = {};
 			// boolean to hide if on page login
@@ -30,13 +30,7 @@
 			$scope.logout = () => {
 				window.sessionStorage.removeItem("USER_OBJ");
 				$location.path('/login/');
-				window.location.reload();
-			};
-
-			$scope.$on('onBeforeUnload', function (e, confirmation) {
-				confirmation.message = "All data willl be lost.";
-				e.preventDefault();
-			});
+            };
 
 			let user_object = JSON.parse(window.sessionStorage.getItem('USER_OBJ'));
 			$scope.username = (user_object !== null) ? user_object.data.username : '';
@@ -47,18 +41,18 @@
 					$scope.username = (user_object !== null) ? user_object.data.username : '';
 					setTimeout(() => {
 						$scope.current_location = window.location.hash === '#/login/';
-						$scope.$digest();
+						$scope.$apply();
 					}, 0);
 				}
-			});
+            });
+            
 			let array = [];
 			$scope.links = [];
 			$scope.links = angular.copy(array.getDefaultNavLinks());
-			$scope.css = {};
-			//$scope.css = angular.copy(array.navStyle()[0]);
 			$scope.current_location = window.location.hash === '#/login/';
 
-			setTimeout(() => { $scope.$digest(); }, 0);
+            setTimeout(() => { $scope.$apply(); }, 0);
+            
 		}
 
 		return {
@@ -77,3 +71,4 @@
 	}
 
 })();
+

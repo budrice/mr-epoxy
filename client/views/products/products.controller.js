@@ -11,7 +11,6 @@
         ProductService.GetProducts().then((result) => {
             $scope.products = result.data;
             $scope.$apply();
-            msgbox.success('Products are loaded.', 'Content Loader');
         }, (error) => {
             console.log(error);
         });

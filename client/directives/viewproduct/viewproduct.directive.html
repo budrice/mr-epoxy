@@ -1,0 +1,59 @@
+<div class="container-fluid" style="padding-right: 24px; background-color: #fff;">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <div class="row">
+                    <img ng-src="../../images/{{ linkProduct.filename }}" alt="{{ linkProduct.name }}" class="img-responsive">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6" style="padding-right: 5px;">
+    
+                <div class="row">
+                    <div class="col-xs-6">
+                        <span>{{ linkProduct.item }}</span>
+                    </div>
+                    <div class="col-xs-6" style="background-color: rgb(0, 128, 0); color: rgb(255, 255, 255)">
+                        <span>${{ linkProduct.amount }}</span>
+                    </div>
+                </div>
+    
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h3 style="text-align: center"><strong>{{ linkProduct.name }}</strong></h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h5 style="text-align: center">{{ linkProduct.description }}</h5>
+                    </div>
+                </div>
+    
+                <div class="row">
+                    <div class="col-xs-12 text">
+                        <div class="col-xs-12 input-group">
+                            <input type="number" class="form-control" placeholder="sqft" aria-describedby="basic-addon2"
+                                ng-model="linkProduct.sqft" ng-change="calulatePriceFromSqft(linkProduct.sqft, linkProduct.spread)">
+                            <span class="tail-lbl input-group-addon">sqft</span>
+                        </div>
+                        <div class="col-xs-12 input-group">
+                            <input type="number" class="form-control" placeholder="quantity" aria-describedby="basic-addon2"
+                                ng-model="linkProduct.gallons" ng-change="calulatePriceFromGallons(linkProduct.gallons)">
+                            <span class="tail-lbl input-group-addon">{{ linkProduct.per }}</span>
+                        </div>
+                        <div class="col-xs-12 input-group">
+                            <input type="text" class="form-control" placeholder="total price" aria-describedby="basic-addon2"
+                                value="{{ linkProduct.total | currency }}" readonly>
+                            <span class="tail-lbl input-group-addon">total</span>
+                        </div>
+                        <button class="order btn btn-success form-control" ng-click="placeOrder()">Order</button>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 text">
+                <div class="container-fluid"><p><strong>features:</strong> {{ linkProduct.features }}</p></div>
+                
+            </div>
+        </div>
+    </div>

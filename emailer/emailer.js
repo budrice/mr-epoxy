@@ -1,5 +1,5 @@
 let nodemailer = require('nodemailer');
-let config = require('./../../../config/config.json');
+let config = require('./../config.json');
 
 let transporter = nodemailer.createTransport({
 	service: config.email_service,
@@ -9,24 +9,21 @@ let transporter = nodemailer.createTransport({
 	}
 });
 
+module.exports = function () {
 
-module.exports = function() {
-	
 	return {
 		Send: send
 	};
-	
+
 	function send(body) {
-		return new Promise((resolve, reject)=> {
-			let mailOptions = {
-				from: body.from,
-				to: config.email_service_address,
-				subject: body.subject,
-				text: body.text
-			};
+		return new Promise((resolve, reject) => {
+
+            body.from = config.email_service_address;
+
 			try {
-				transporter.sendMail(mailOptions, (error, info)=> {
+				transporter.sendMail(body, (error, info) => {
 					if (error) {
+                        console.log(error);
 						resolve(error);
 					} else {
 						console.log('Email sent: ' + info.response);
@@ -36,10 +33,11 @@ module.exports = function() {
 			}
 			catch (error) {
 				reject(error);
-			}
+            }
+            
 		});
-		
+
 	}
-	
+
 };
 

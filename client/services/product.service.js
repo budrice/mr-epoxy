@@ -2,8 +2,7 @@
 
     'use strict';
 
-    angular.module('app')
-        .factory('ProductService', ProductService);
+    angular.module('app').factory('ProductService', ProductService);
 
     ProductService.$inject = ['$http'];
     function ProductService($http) {
@@ -13,15 +12,12 @@
         };
 
         function getProducts() {
-            console.log('getProducts service...');
             return new Promise((resolve, reject) => {
-                $http.get('/api/v1/database/getproducts')
-                    .then((result) => {
-                        console.log(result);
-                        resolve(result);
-                    }, (error) => {
-                        reject(error);
-                    });
+                $http.get('/api/database/getproducts').then((result) => {
+                    resolve(result);
+                }, (error) => {
+                    reject(error);
+                });
             });
         }
 

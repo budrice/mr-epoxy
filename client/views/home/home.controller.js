@@ -7,8 +7,8 @@
 
 	HomeController.$inject = ['$scope'];
 	function HomeController($scope) {
-		$scope.title = 'mr-epoxy';
+		$scope.title = 'Mr-Epoxy';
 		$scope.desc = 'moisture mitigation epoxy';
-		$scope.est = '~ est 1986 ~';
+        $scope.est = '~ est 1986 ~';
 	}
 })();

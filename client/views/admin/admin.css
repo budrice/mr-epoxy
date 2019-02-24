@@ -1,4 +1,6 @@
-div#eldis_web_app_admin_page {
-	max-width: 1012px;
-	height: 78vh;
+.gray-bg {
+    background-color: rgb(235, 240, 255);
+}
+.blue-bg {
+    background-color: rgb(215, 220, 255);
 }

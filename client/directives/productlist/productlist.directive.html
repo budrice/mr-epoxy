@@ -1,5 +1,13 @@
-<ul class="list-group">
-    <li ng-repeat="product in products">
-        <app-productlink link-product="product" link-index="$index"></app-productlink>
-    </li>
-</ul>
+
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default" ng-repeat="product in products" ng-init="product_to_view[product.item].show = false">
+        <app-productlink link-product="product" link-index="$index" ng-click="product_to_view[product.item].show = !product_to_view[product.item].show"></app-productlink>
+
+        <div class="panel-body" ng-show="product_to_view[product.item].show">
+            <app-view-product link-product="product"></app-view-product>
+        </div>
+    </div>
+</div>
+
+

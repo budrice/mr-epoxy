@@ -7,6 +7,7 @@ div#eldis_app_login_box {
 	padding: 10px;
 	background-color: #343a40;
 	border: 1px solid #767676;
+	margin-bottom: 150px;
 }
 div#eldis_app_login_box p {
 	color: #28a745;
@@ -24,6 +25,12 @@ div#eldis_app_login_box button {
 .panel {
 	border-radius: 9px;
 	border: 1px solid rgba(0, 0, 0, 1);
+}
+.vanish {
+	display: none;
+}
+.appear {
+	display: block;
 }
 /*input.ng-valid {
 	background-color: rgb(0, 255, 0);

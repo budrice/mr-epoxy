@@ -4,9 +4,32 @@
 
    angular.module('app')
       .factory('msgbox', msgbox).config(() => {
-         toastr.options.timeOut = 4000;
-         toastr.options.positionClass = 'toast-bottom-right';
+        //  toastr.options.timeOut = 4000;
+        //  toastr.options.positionClass = 'toast-bottom-center';
+         toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-bottom-center",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "4000",
+            "hideDuration": "0",
+            "timeOut": "4000",
+            "extendedTimeOut": "0",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+         }
       });
+
+
+
+
+
+
 
    msgbox.$inject = [];
    function msgbox() {

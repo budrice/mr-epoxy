@@ -13,7 +13,7 @@
             init();
             function init() {
                 if ($scope.linkIndex === 0) {
-                    $rootScope.product = $scope.linkProduct;;
+                    $rootScope.product = $scope.linkProduct;
                 }
             }
 

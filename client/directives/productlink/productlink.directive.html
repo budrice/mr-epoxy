@@ -1,14 +1,14 @@
 <a class="list-group-item" style="cursor: pointer;" ng-click="onActivate()">
     <div class="nopad row">
-        <div class="col-xs-3" style="border: 1px solid #444444; padding: 0;">
+        <div class="col-xs-3" style="border-right: 1px solid #444444; padding: 0;">
             <img ng-src="../../images/{{ linkProduct.filename }}" alt="picture" class="img-responsive">
         </div>
         <div class="col-xs-9">
             <div class="row">
-                <div class="col-xs-9">
-                    <p><strong>{{ linkProduct.name }}</strong></p>
+                <div class="col-xs-8">
+                    <span><strong>{{ linkProduct.name }}</strong></span>
                 </div>
-                <div class="col-xs-3">
+                <div class="col-xs-4">
                     <p>${{ linkProduct.amount }}</p>
                 </div>
             </div>

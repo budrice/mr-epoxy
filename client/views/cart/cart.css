@@ -1,0 +1,41 @@
+.back-header .row:nth-child(2) {
+    background-color: rgb(205, 205, 205);
+}
+.big-btn {
+    height: 65px;
+}
+div.row:nth-child(3) {
+    background-color: rgb(105, 105, 105);
+    color: rgb(0, 255, 180);
+}
+.total-row {
+    border-top: 1px solid rgb(105, 105, 105); 
+    padding-top: 5px; 
+    margin-bottom: 15px;
+}
+.tar { text-align: right; }
+.total-label {
+    text-align: center; 
+    background-color: rgb(105, 105, 105); 
+    color: #fff; 
+    border: 1px solid rgb(105, 105, 105);
+}
+.total-box {
+    text-align: right; 
+    background-color: rgb(205, 205, 205);
+    border: 1px solid rgb(105, 105, 105);
+    
+}
+
+@media only screen and (max-width: 767px) {
+    .total-box{ padding-right: 15px };
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    
+}
+@media only screen and (min-width: 1200px) {
+    
+}

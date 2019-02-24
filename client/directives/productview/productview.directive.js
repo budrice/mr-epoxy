@@ -8,9 +8,10 @@
 
         controller.$inject = ['$scope', '$rootScope', 'msgbox'];
         function controller($scope, $rootScope, msgbox) {
+            
             let user_object = JSON.parse(window.sessionStorage.getItem('USER_OBJ'));
-            $scope.product_to_view = {};
-            $scope.product_to_view.filename = 'blank.jpg';
+            //$scope.product_to_view = {};
+            //$scope.product_to_view.filename = 'blank.jpg';
 
             $scope.calulateGallons = (x) => {
                 let gal = 0;
@@ -18,8 +19,12 @@
                 $scope.product_to_view.gallons = gal;
             }
 
-            /*  */
+            /**
+             * placeOrder
+             * places 
+             */
             $scope.placeOrder = () => {
+
                 if (!user_object) {
                     msgbox.warning('You must be logged in to complete that action.')
                     return;
@@ -32,7 +37,7 @@
                 }
             };
             $rootScope.$watch('product', (val) => {
-                $scope.product_to_view = val;
+                //$scope.product_to_view = val;
             });
         }
 
