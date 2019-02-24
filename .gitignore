@@ -1,3 +1,4 @@
+0-resources-0/*
 node_modules/*
 config.json
 secret.js
