@@ -40,14 +40,24 @@
             if (stage === 1) {
                 userSearch('username', username).then((result) => {
                     if (result.data.length > 0) {
-                        $scope.model.username = username;
-                        member.username = username;
-                        member.id = result.data[0].id;
-                        setTimeout(() => {
-                            $scope.login_obj = loginStageTwo();
-                            $scope.model.input = undefined;
-                            $scope.$apply();
-                        }, 0);
+                        if(result.data[0].verify === 0) {
+                            $scope.model.username = username;
+                            setTimeout(() => {
+                                $scope.login_obj.message = 'Please verify your email address by responding to the link sent to your email.';
+                                $scope.$apply();
+                            }, 0);
+                        }
+                        else {
+                            $scope.model.username = username;
+                            member.username = username;
+                            member.id = result.data[0].id;
+                            setTimeout(() => {
+                                $scope.login_obj = loginStageTwo();
+                                $scope.model.input = undefined;
+                                $scope.$apply();
+                            }, 0);
+                        }
+
                     }
                     else {
                         setTimeout(() => {
@@ -212,11 +222,11 @@
             return {
                 process: 'login',
                 stage: 1,
-                message: 'Enter your username.',
+                message: 'Enter your username or email address.',
                 input: {
                     type: 'text',
                     name: 'username',
-                    placeholder: 'username',
+                    placeholder: 'username or email address',
                     autocomplete: 'username',
                     pattern: null,
                     show: true,

@@ -72,5 +72,12 @@ router.post('/updateunassignedinvoice', (req, res) => {
         res.json(error);
     });
 });
+router.post('/removecartitem', (req, res) => {
+    db.RemoveCartItem(req.body.id).then((result) => {
+        res.json(result);
+    }, (error) => {
+        res.json(error);
+    });
+});
 
 module.exports = router;

@@ -1,134 +1,133 @@
 <bud-navbar></bud-navbar>
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-0 col-sm-2"></div>
-            <div class="col-xs-6 col-sm-2">
-                <img src="../../images/wrench.jpg" alt="wrench" class="img-responsive">
-            </div>
-            <div class="col-xs-6 col-sm-4">
-                <img src="../../images/mr-epoxy.png" alt="mr epoxy" class="img-responsive">
-                <br>
-                <h2>ADMIN</h2>
-            </div>
-            <div class="col-xs-0 col-sm-4"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-0 col-sm-2"></div>
+        <div class="col-xs-6 col-sm-2">
+            <img src="../../images/wrench.jpg" alt="wrench" class="img-responsive">
         </div>
+        <div class="col-xs-6 col-sm-4">
+            <img src="../../images/mr-epoxy.png" alt="mr epoxy" class="img-responsive">
+            <br>
+            <h2>ADMIN</h2>
+        </div>
+        <div class="col-xs-0 col-sm-4"></div>
     </div>
-    <div class="container" id="eldis_web_app_admin_page">
-        <div class="row">
-            <div class="panel">
+</div>
+<div class="container" id="eldis_web_app_admin_page">
+    <div class="row">
+        <div class="panel">
 
-                <div class="row hidden-xs" style="border: 1px solid #000; background-color: #efefef;">
-                    <div class="hidden-xs col-sm-1">username</div>
-                    <div class="hidden-xs col-sm-3">email</div>
-                    <div class="hidden-xs col-sm-1">access</div>
-                    <div class="hidden-xs col-sm-3">date joined</div>
-                    <div class="hidden-xs col-sm-3">last login</div>
-                    <div class="hidden-xs col-sm-1">logged in</div>
+            <div class="row hidden-xs" style="border: 1px solid #000; background-color: #efefef;">
+                <div class="hidden-xs col-sm-1">username</div>
+                <div class="hidden-xs col-sm-3">email</div>
+                <div class="hidden-xs col-sm-1">access</div>
+                <div class="hidden-xs col-sm-3">date joined</div>
+                <div class="hidden-xs col-sm-3">last login</div>
+                <div class="hidden-xs col-sm-1">logged in</div>
+            </div>
+
+            <div class="row" ng-repeat="user in users" style="border-left: 1px solid #000; border-right: 1px solid #000; border-bottom: 1px solid #000;" ng-class-even="'blue-bg'" ng-class-odd="'gray-bg'">
+
+                <div class="col-xs-12 col-sm-1">
+                    <div class="row hidden-sm hidden-md hidden-lg">
+                        <div class="col-xs-1"></div>
+                        <div class="col-xs-11"><h3>username</h3></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-1 hidden-sm hidden-md hidden-lg"></div>
+                        <div class="hidden-xs col-sm-12">{{ user.username }}</div>
+                        <div class="col-xs-10 hidden-sm hidden-md hidden-lg" style="border: 1px solid #000; background-color: #efefef;"><h3>{{ user.username }}</h3></div>
+                        <div class="col-xs-1 hidden-sm hidden-md hidden-lg"></div>
+                    </div>
                 </div>
 
-                <div class="row" ng-repeat="user in users" style="border-left: 1px solid #000; border-right: 1px solid #000; border-bottom: 1px solid #000;" ng-class-even="'blue-bg'" ng-class-odd="'gray-bg'">
-
-                    <div class="col-xs-12 col-sm-1">
-                        <div class="row hidden-sm hidden-md hidden-lg">
-                            <div class="col-xs-1"></div>
-                            <div class="col-xs-11"><h3>username</h3></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-1 hidden-sm hidden-md hidden-lg"></div>
-                            <div class="hidden-xs col-sm-12">{{ user.username }}</div>
-                            <div class="col-xs-10 hidden-sm hidden-md hidden-lg" style="border: 1px solid #000; background-color: #efefef;"><h3>{{ user.username }}</h3></div>
-                            <div class="col-xs-1 hidden-sm hidden-md hidden-lg"></div>
-                        </div>
+                <div class="col-xs-12 col-sm-3">
+                    <div class="row hidden-sm hidden-md hidden-lg">
+                        <div class="col-xs-1"></div>
+                        <div class="col-xs-11"><h3>email</h3></div>
                     </div>
-
-                    <div class="col-xs-12 col-sm-3">
-                        <div class="row hidden-sm hidden-md hidden-lg">
-                            <div class="col-xs-1"></div>
-                            <div class="col-xs-11"><h3>email</h3></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-1 hidden-sm hidden-md hidden-lg"></div>
-                            <div class="hidden-xs col-sm-12">{{ user.email }}</div>
-                            <div class="col-xs-10 hidden-sm hidden-md hidden-lg" style="border: 1px solid #000; background-color: #efefef;"><h3>{{ user.email }}</h3></div>
-                            <div class="col-xs-1 hidden-sm hidden-md hidden-lg"></div>
-                        </div>
+                    <div class="row">
+                        <div class="col-xs-1 hidden-sm hidden-md hidden-lg"></div>
+                        <div class="hidden-xs col-sm-12">{{ user.email }}</div>
+                        <div class="col-xs-10 hidden-sm hidden-md hidden-lg" style="border: 1px solid #000; background-color: #efefef;"><h3>{{ user.email }}</h3></div>
+                        <div class="col-xs-1 hidden-sm hidden-md hidden-lg"></div>
                     </div>
-
-                    <div class="col-xs-12 col-sm-1">
-                        <div class="row hidden-sm hidden-md hidden-lg">
-                            <div class="col-xs-1"></div>
-                            <div class="col-xs-11"><h3>access</h3></div>
-                        </div>
-                        <div class="nopad row">
-                            <div class="col-xs-1 hidden-sm hidden-md hidden-lg"></div>
-
-                            <div class="nopad hidden-xs col-sm-12">
-                                <input type="number" 
-                                    class="form-control"
-                                    style="border: 0; text-align: right;"
-                                    ng-model="user.access_level"
-                                    ng-change="update('member', user.id, { access_level: user.access_level })">
-                            </div>
-                            <div class="nopad col-xs-10 hidden-sm hidden-md hidden-lg" style="border: 1px solid #000; background-color: #efefef;">
-                                <input type="number" 
-                                    class="form-control" 
-                                    style="border: 0; text-align: right;  font-size: 24px;"
-                                    ng-model="user.access_level" 
-                                    ng-change="update('member', user.id, { access_level: user.access_level })">
-                            </div>
-                            <div class="col-xs-1 hidden-sm hidden-md hidden-lg"></div>
-                        </div>
-                    </div>
-
-                    <div class="col-xs-12 col-sm-3">
-                        <div class="row hidden-sm hidden-md hidden-lg">
-                            <div class="col-xs-1"></div>
-                            <div class="col-xs-11"><h3>date join</h3></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-1 hidden-sm hidden-md hidden-lg"></div>
-                            <div class="hidden-xs col-sm-12">{{ user.date_join }}</div>
-                            <div class="col-xs-10 hidden-sm hidden-md hidden-lg" style="border: 1px solid #000; background-color: #efefef;"><h3>{{ user.date_join }}</h3></div>
-                            <div class="col-xs-1 hidden-sm hidden-md hidden-lg"></div>
-                        </div>
-                    </div>
-
-                    <div class="col-xs-12 col-sm-3">
-                        <div class="row hidden-sm hidden-md hidden-lg">
-                            <div class="col-xs-1"></div>
-                            <div class="col-xs-11"><h3>last login</h3></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-1 hidden-sm hidden-md hidden-lg"></div>
-                            <div class="hidden-xs col-sm-12">{{ user.date_last_login }}</div>
-                            <div class="col-xs-10 hidden-sm hidden-md hidden-lg" style="border: 1px solid #000; background-color: #efefef;"><h3>{{ user.date_last_login }}</h3></div>
-                            <div class="col-xs-1 hidden-sm hidden-md hidden-lg"></div>
-                        </div>
-                    </div>
-
-                    <div class="col-xs-12 col-sm-1">
-                        <div class="row hidden-sm hidden-md hidden-lg">
-                            <div class="col-xs-1"></div>
-                            <div class="col-xs-11"><h3>logged in</h3></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-1 hidden-sm hidden-md hidden-lg"></div>
-                            <div class="hidden-xs col-sm-12">{{ user.is_logged_in }}</div>
-                            <div class="col-xs-10 hidden-sm hidden-md hidden-lg" style="border: 1px solid #000; background-color: #efefef;"><h3>{{ user.is_logged_in }}</h3></div>
-                            <div class="col-xs-1 hidden-sm hidden-md hidden-lg"></div>
-                        </div>
-                        <!-- space under input-->
-                        <div class="row hidden-sm hidden-md hidden-lg" style="height:35px;"></div>
-                    </div>
-
-                    
-
                 </div>
 
-                <div class="row">
+                <div class="col-xs-12 col-sm-1">
+                    <div class="row hidden-sm hidden-md hidden-lg">
+                        <div class="col-xs-1"></div>
+                        <div class="col-xs-11"><h3>access</h3></div>
+                    </div>
+                    <div class="nopad row">
+                        <div class="col-xs-1 hidden-sm hidden-md hidden-lg"></div>
 
+                        <div class="nopad hidden-xs col-sm-12">
+                            <input type="number" 
+                                class="form-control"
+                                style="border: 0; text-align: right;"
+                                ng-model="user.access_level"
+                                ng-change="update('member', user.id, { access_level: user.access_level })">
+                        </div>
+                        <div class="nopad col-xs-10 hidden-sm hidden-md hidden-lg" style="border: 1px solid #000; background-color: #efefef;">
+                            <input type="number" 
+                                class="form-control" 
+                                style="border: 0; text-align: right;  font-size: 24px;"
+                                ng-model="user.access_level" 
+                                ng-change="update('member', user.id, { access_level: user.access_level })">
+                        </div>
+                        <div class="col-xs-1 hidden-sm hidden-md hidden-lg"></div>
+                    </div>
                 </div>
 
+                <div class="col-xs-12 col-sm-3">
+                    <div class="row hidden-sm hidden-md hidden-lg">
+                        <div class="col-xs-1"></div>
+                        <div class="col-xs-11"><h3>date join</h3></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-1 hidden-sm hidden-md hidden-lg"></div>
+                        <div class="hidden-xs col-sm-12">{{ user.date_join }}</div>
+                        <div class="col-xs-10 hidden-sm hidden-md hidden-lg" style="border: 1px solid #000; background-color: #efefef;"><h3>{{ user.date_join }}</h3></div>
+                        <div class="col-xs-1 hidden-sm hidden-md hidden-lg"></div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-3">
+                    <div class="row hidden-sm hidden-md hidden-lg">
+                        <div class="col-xs-1"></div>
+                        <div class="col-xs-11"><h3>last login</h3></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-1 hidden-sm hidden-md hidden-lg"></div>
+                        <div class="hidden-xs col-sm-12">{{ user.date_last_login }}</div>
+                        <div class="col-xs-10 hidden-sm hidden-md hidden-lg" style="border: 1px solid #000; background-color: #efefef;"><h3>{{ user.date_last_login }}</h3></div>
+                        <div class="col-xs-1 hidden-sm hidden-md hidden-lg"></div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-1">
+                    <div class="row hidden-sm hidden-md hidden-lg">
+                        <div class="col-xs-1"></div>
+                        <div class="col-xs-11"><h3>logged in</h3></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-1 hidden-sm hidden-md hidden-lg"></div>
+                        <div class="hidden-xs col-sm-12">{{ user.is_logged_in }}</div>
+                        <div class="col-xs-10 hidden-sm hidden-md hidden-lg" style="border: 1px solid #000; background-color: #efefef;"><h3>{{ user.is_logged_in }}</h3></div>
+                        <div class="col-xs-1 hidden-sm hidden-md hidden-lg"></div>
+                    </div>
+                    <!-- space under input-->
+                    <div class="row hidden-sm hidden-md hidden-lg" style="height:35px;"></div>
+                </div>
             </div>
         </div>
     </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h6 class="budrice">website developed by <a href="https://github.com/budrice" target="_blank" class="budrice-link">budrice</a></h6>
+        </div>
+    </div>
+</div>

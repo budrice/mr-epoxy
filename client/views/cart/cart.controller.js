@@ -29,8 +29,8 @@
         function getInvoice() {
             AppService.GetInvoice(id, key, inv).then((result) => {
                 $scope.customer.cart = result.data;
-                $scope.$apply();
                 populateTotal(result.data);
+                $scope.$apply();
             }, (error) => {
                 console.log(error);
             });
@@ -42,7 +42,6 @@
                 t = t + item.total;
             })
             $scope.customer.total = t;
-            $scope.$apply();
         }
 
         $scope.goBack = () => {
@@ -133,7 +132,15 @@
             }, (error)=> {
                 msgbox.warning('Something went wrong. Order was not completed.');
             });
-		};
+        }
+        
+        $scope.removeItem = (id) => {
+            AppService.RemoveCartItem(id).then((result) => {
+                getInvoice();
+            }, (error) => {
+                console.log(error);
+            });
+        };
 
     }
 })();

@@ -20,7 +20,8 @@
             UpdateUnassignedInvoice: updateUnassignedInvoice,
 			IsLoggedIn: isLoggedIn,
 			GetUserObject: getUserObject,
-			SendEmail: sendEmail
+            SendEmail: sendEmail,
+            RemoveCartItem: removeCartItem
 		};
 
 		function search(search_object) {
@@ -166,11 +167,30 @@
                     else {
                         resolve(true);
                     }
-                    resolve(result);
                 }, (error) => {
                     reject(error);
                 });
             });
+        }
+
+        function removeCartItem(id){ 
+            return new Promise((resolve, reject) => {
+                let data = { id: id };
+                $http({
+                    method: 'POST',
+                    url: '/api/database/removecartitem',
+                    data: data
+                }).then((result) => {
+                    if (result.error) {
+                        reject(error);
+                    }
+                    else {
+                        resolve(true);
+                    }
+                }, (error) => {
+                    reject(error);
+                });
+            })
         }
 
 		/**

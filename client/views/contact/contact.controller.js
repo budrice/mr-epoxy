@@ -14,21 +14,27 @@
 		 * send
 		 */
 		$scope.send = ()=> {
-			if ($scope.contact_form.$dirty) {
-				let email = {
-					from: user_object.data.emailaddress,
-					subject: $scope.contact.subject,
-					text: $scope.contact.message
-				};
-				AppService.SendEmail(email).then((result)=> {
-					$scope.contact = {};
-					$scope.$digest();
-					msgbox.info(result.data.message);
-				}, (error)=> {
-					msgbox.warning('Something went wrong!');
-					console.log(error);
-				});
-			}
+            if (!user_object) {
+                msgbox.warning('You must be logged in to use contact form.');
+            }
+            else {
+                if ($scope.contact_form.$dirty) {
+                    let email = {
+                        to: 'mrepoxyweb@gmail.com',
+                        subject: $scope.contact.subject,
+                        html: '<h4>Email from: ' + user_object.data.username + '.</h4><br><span>' + user_object.data.email + '</span><br><p>' + $scope.contact.message + '</p>'
+                    };
+                    AppService.SendEmail(email).then((result)=> {
+                        $scope.contact = {};
+                        $scope.$digest();
+                        msgbox.info(result.data.message);
+                    }, (error)=> {
+                        msgbox.warning('Something went wrong!');
+                        console.log(error);
+                    });
+                }
+            }
+
 		};
         
     }

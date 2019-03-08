@@ -1,12 +1,25 @@
 <main>
     <bud-navbar></bud-navbar>
     <div class="container-fluid">
+        
         <div class="row">
-            <div class="col-xs-0 col-sm-1 col-md-3 col-lg-4"></div>
+            <div class="hidden-xs col-sm-1 col-md-3 col-lg-4"></div>
             <div class="col-xs-12 col-sm-10 col-md-6 col-lg-4">
-                <app-productlist products="products"></app-productlist>
+                <div class="row" style="margin-bottom: 15px;">
+                    <div class="hidden-xs col-sm-6"></div>
+                    <div class="nopad col-xs-12  col-sm-6" style="min-height: 25px;">
+                        <button class="btn btn-success form-control" ng-click="goToCart()" ng-show="cart.show">
+                            <span class="glyphicon glyphicon-shopping-cart" style="font-size: 22px;"></span>
+                            &nbsp;&nbsp;&nbsp;
+                            <span>ITEMS: {{ cart.items }}, TOTAL: {{ cart.total | currency:"$" }}</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <app-productlist products="products"></app-productlist>
+                </div>
             </div>
-            <div class="col-xs-0 col-sm-1 col-md-3 col-lg-4"></div>
+            <div class="hidden-xs col-sm-1 col-md-3 col-lg-4"></div>
         </div>
     </div>
     <div class="row">

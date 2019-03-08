@@ -1,6 +1,8 @@
 let jwt = require('jwt-simple');
 let bcrypt = require('bcryptjs');
 let mysql = require('mysql');
+let Emailer = require('./../emailer/emailer.js');
+let emailer = new Emailer();
 let config = require('./../config.json');
 
 let db = mysql.createPool({
@@ -27,7 +29,8 @@ module.exports = function () {
         Update: update,
         UserSearch: userSearch,
         GetInvoice: getInvoice,
-        UpdateUnassignedInvoices: updateUnassignedInvoices
+        UpdateUnassignedInvoices: updateUnassignedInvoices,
+        RemoveCartItem: removeCartItem
 	};
 
 	function login(member) {
@@ -42,21 +45,30 @@ module.exports = function () {
             });
 
             function validate() {
+
                 let promise = new Promise((resolve, reject) => {
+
                     if (!member.id) {
                         resolve({ error: { message: "Unable to login." } });
                     }
+
                     let sql = "SELECT * FROM `mr-epoxy`.member WHERE id = ?;";
+
                     try {
+
                         db.query(sql, [member.id], function (error, result) {
+
                             if (error) {
+                                
                                 let response = {};
                                 response.error = error;
                                 resolve(response);
+
                             }
                             else {
                                 let response = {};
                                 if (result.length > 0) {
+
                                     if (bcrypt.compareSync(member.password, result[0].password)) {
                                         response.result = {};
                                         response = result[0];
@@ -67,6 +79,7 @@ module.exports = function () {
                                         response.error.message = "Your password is incorrect.";
                                         resolve(response);
                                     }
+
                                 }
                                 else {
                                     response.error = {};
@@ -74,16 +87,22 @@ module.exports = function () {
                                     resolve(response);
                                 }
                             }
+
                         });
+
                     }
                     catch (error) {
                         reject(error);
                     }
+
+
                 });
                 return promise;
+
             }
 
             function updateMember(dbresult) {
+
                 let response = {};
                 return new Promise((resolve, reject) => {
                     if (dbresult.error) {
@@ -166,9 +185,17 @@ module.exports = function () {
 			}
 		});
     }
-
+ 
     function userSearch(key, value) {
-        let sql = "SELECT * FROM `mr-epoxy`.member WHERE " + key + "='" + value + "';";
+
+        let sql = "SELECT * FROM `mr-epoxy`.member WHERE ";
+        if(key == 'username' || key == 'email') {
+            sql = sql + key + "='" + value + "' OR email='" + value + "';";
+        }
+        else {
+            sql = sql + key + "='" + value + "';";
+        }
+
         return new Promise((resolve, reject) => {
             try {
                 db.query(sql, (error, result) => {
@@ -179,7 +206,11 @@ module.exports = function () {
                     }
                     else {
                         if(result.length > 0) {
-                            resolve([{ id: result[0].id, username: result[0].username }]);
+                            resolve([{ 
+                                id: result[0].id,
+                                username: result[0].username,
+                                verify: result[0].verified
+                            }]);
                         }
                         else {
                             resolve(false);
@@ -377,7 +408,7 @@ module.exports = function () {
 						email: member.email,
 						username: member.username,
 						access_level: 1,// limited access until upgrade level.
-						reg_code: salt
+						reg_code: salt.replace('/', '')
 					};
 					var sql = "INSERT INTO `mr-epoxy`.member SET ?;";
 					try {
@@ -388,6 +419,7 @@ module.exports = function () {
 								resolve(response);
 							}
 							else {
+                                emailer.SendCode(member.email, insert_object.reg_code);
 								resolve(result);
 							}
 						});
@@ -421,7 +453,26 @@ module.exports = function () {
 			}
 		});
 
-	}
+    }
+    
+    function removeCartItem(id) {
+        return new Promise((resolve, reject) => {
+            let sql = "DELETE FROM `mr-epoxy`.customer WHERE id=?";
+            try {
+				db.query(sql, [id], (error, result) => {
+					if (error) {
+						reject(error);
+					}
+					else {
+						resolve(result);
+					}
+				});
+			}
+			catch (error) {
+				reject(error);
+            }
+        });
+    }
 
 };
 

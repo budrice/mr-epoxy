@@ -39,7 +39,6 @@
                 }
                 else {
                     if ($scope.linkProduct.gallons > 0) {
-
                         let update_obj = {};
                         update_obj.table = 'customer';
                         update_obj.values = {
